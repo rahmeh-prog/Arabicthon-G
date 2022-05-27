@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 
-import 'package:game/thirdGame/drawn_line.dart';
-import 'package:game/thirdGame/sketcher.dart';
+import '/thirdGame/drawn_line.dart';
+import '/thirdGame/sketcher.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:screenshot/screenshot.dart';

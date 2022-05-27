@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:game/global.dart' as global;
+import '/global.dart' as global;
 
 class GameCard extends StatelessWidget {
   final onTap;

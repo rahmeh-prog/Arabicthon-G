@@ -1,4 +1,4 @@
-import 'package:game/thirdGame/drawn_line.dart';
+import '/thirdGame/drawn_line.dart';
 import 'package:flutter/material.dart';
 
 class Sketcher extends CustomPainter {

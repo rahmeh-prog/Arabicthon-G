@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:game/scdGame/figureImage.dart';
-import 'package:game/scdGame/letters.dart';
-import 'package:game/scdGame/utils.dart';
+import '/scdGame/figureImage.dart';
+import '/scdGame/letters.dart';
+import '/scdGame/utils.dart';
 
 class scoundGame extends StatelessWidget {
   const scoundGame({Key? key}) : super(key: key);

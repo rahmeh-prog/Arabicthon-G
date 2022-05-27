@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:game/helpers/colors.dart';
-import 'package:game/widgets/Button.dart';
-import 'package:game/widgets/Field.dart';
+import '/helpers/colors.dart';
+import '/widgets/Button.dart';
+import '/widgets/Field.dart';
 
 import 'home.dart';
 import 'login.dart';

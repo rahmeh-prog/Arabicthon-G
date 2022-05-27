@@ -1,9 +1,9 @@
-import 'package:game/firstGame/components/gameCard.dart';
+import '/firstGame/components/gameCard.dart';
 import 'package:flutter/material.dart';
-import 'package:game/firstGame/components/resultCard.dart';
-import 'package:game/firstGame/utils/gameUtiles.dart';
+import '/firstGame/components/resultCard.dart';
+import '/firstGame/utils/gameUtiles.dart';
 
-import 'package:game/global.dart' as global;
+import '/global.dart' as global;
 
 class FirstGame extends StatefulWidget {
   const FirstGame({Key? key}) : super(key: key);

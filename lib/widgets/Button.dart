@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:game/helpers/colors.dart';
+import '/helpers/colors.dart';
 
 class button extends StatelessWidget{
 

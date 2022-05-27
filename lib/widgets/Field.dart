@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:game/helpers/colors.dart';
+import '/helpers/colors.dart';
 
 // Create a Form widget.
 class Field extends StatefulWidget {
