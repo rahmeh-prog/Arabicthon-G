@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui';
+import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
-
-
-import '/thirdGame/drawn_line.dart';
-import '/thirdGame/sketcher.dart';
+import 'drawn_line.dart';
+import 'sketcher.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:screenshot/screenshot.dart';
 
 class DrawingPage extends StatefulWidget {
   const DrawingPage({Key? key}) : super(key: key);
@@ -17,54 +16,70 @@ class DrawingPage extends StatefulWidget {
 }
 
 class _DrawingPageState extends State<DrawingPage> {
-  ScreenshotController screenshotController = ScreenshotController();
   Client client = http.Client();
 
+  final key = GlobalKey();
   final GlobalKey _globalKey = GlobalKey();
   List<DrawnLine> lines = <DrawnLine>[];
   DrawnLine line = DrawnLine([], Colors.black, 0);
-  Color selectedColor = Colors.black;
-  double selectedWidth = 5.0;
+  Color selectedColor = Color(0xff00ff00);
+  double selectedWidth = 10.0;
+  String result = "هيا نبدأ";
 
-  dynamic backGround = AssetImage("images/whitePage.jpg");
-  int done = -1;
-  dynamic img1;
-  dynamic img2;
+  dynamic backGround = AssetImage("images/thirdGame/handWriting1.png");
+  int done = 0;
+  var img1;
+  var img2;
 
   StreamController<List<DrawnLine>> linesStreamController = StreamController<List<DrawnLine>>.broadcast();
   StreamController<DrawnLine> currentLineStreamController = StreamController<DrawnLine>.broadcast();
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      img1 = save;
-      print(img1);
-      setState(() {
-        backGround = AssetImage("images/handWriting1.png");
-        done++;
-      });
-    });
-  }
+  // Container(
+  // decoration: BoxDecoration(image: DecorationImage(
+  // image: backGround,
+  // fit: BoxFit.fill,
+  // ),
+  // ),
 
   @override
   Widget build(BuildContext context) {
-    return Screenshot(
-      controller: screenshotController,
-      child: Container(
-        decoration: BoxDecoration(image: DecorationImage(
-          image: backGround,
-          fit: BoxFit.fill,
-        ),),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Stack(
-            children: [
-              buildAllPaths(context),
-              buildCurrentPath(context),
-              done==0?toolbar():Container(),
-            ],
-          ),
+    return Container(
+      decoration: BoxDecoration(image: DecorationImage(image: AssetImage("images/thirdGame/backGround.png"), fit: BoxFit.fill)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            RepaintBoundary(key: key, child: Stack(children: [Center(child: Image(image: backGround)),buildAllPaths(context),
+              buildCurrentPath(context),])),
+            done==1?toolbar():Container(),
+            done==0?Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: GestureDetector(
+                    onTap: () async{
+                      img1 = await base64Encode(await save());
+                      setState(() {
+                        img1;
+                        done=done==0?1:0;
+                      });
+                    },
+
+                    child: Padding(
+                      padding: const EdgeInsets.all(40.0),
+                      child: Container(
+                        decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(50.0)),
+                        child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                            child: Text(result, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ):Container(),
+          ],
         ),
       ),
     );
@@ -153,63 +168,16 @@ class _DrawingPageState extends State<DrawingPage> {
           ),
           saveButton(),
           const SizedBox(
-            height: 20.0,
-          ),
-          colorButton(Colors.red),
-          colorButton(Colors.blueAccent),
-          colorButton(Colors.deepOrange),
-          colorButton(Colors.green),
-          colorButton(Colors.lightBlue),
-          colorButton(Colors.black),
-          colorButton(Colors.white),
-          const SizedBox(
             height: 40.0,
           ),
-          fontSizeButton(5.0),
-          fontSizeButton(10.0),
-          fontSizeButton(15.0),
         ],
-      ),
-    );
-  }
-
-  Widget fontSizeButton(double strokeWidth) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedWidth = strokeWidth;
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Container(
-          width: strokeWidth * 2,
-          height: strokeWidth * 2,
-          decoration: BoxDecoration(color: selectedColor, borderRadius: BorderRadius.circular(50.0)),
-        ),
-      ),
-    );
-  }
-
-  Widget colorButton(Color color) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: FloatingActionButton(
-        mini: true,
-        backgroundColor: color,
-        child: Container(),
-        onPressed: () {
-          setState(() {
-            selectedColor = color;
-          });
-        },
       ),
     );
   }
 
   Future<http.Response> getResults(String img1, String img2){
     return http.post(
-        Uri.parse("http://osamafityani.pythonanywhere.com/writing"),
+        Uri.parse("http://osamafityani.pythonanywhere.com/games/handwriting"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           "Access-Control_Allow_Origin": "*",
@@ -219,34 +187,35 @@ class _DrawingPageState extends State<DrawingPage> {
         }));
   }
 
-  Future<dynamic> save() async {
-    screenshotController
-        .capture(delay: Duration(milliseconds: 10))
-        .then((capturedImage) async {
-      return base64.encode(capturedImage!);
-      });
+  void takeScreenState() async{
+    img2 = await base64Encode(await save());
+    setState(() {
+      img2;
+      done=done==0?1:0;
+    });
+    dynamic response = await getResults(img2,img1);
+    String resImg = jsonDecode(await response.body)["image"];
+    int resText = jsonDecode(await response.body)["accuracy"];
+    setState(() {
+      backGround = Image.memory(base64Decode(resImg)).image;
+      result = "الدقة: ${resText.toString()}";
+    });
+  }
+
+  dynamic save() async {
+    final boundary = key.currentContext
+        ?.findRenderObject() as RenderRepaintBoundary?;
+    final image = await boundary?.toImage();
+    final byteData = await image?.toByteData(format: ImageByteFormat.png);
+    final imageBytes = byteData?.buffer.asUint8List();
+    if (imageBytes != null) {
+      return imageBytes;
+    }
   }
 
   Widget saveButton() {
     return GestureDetector(
-      onTap: () async{
-        setState(() {
-          done++;
-          backGround=AssetImage("images/whitePage.jpg");
-        });
-        img2 = save;
-        print(img2);
-
-        dynamic response = await getResults(img2, img1);
-        String result = "";
-        if (response.statusCode == 200) {
-          Map resultDict = jsonDecode(response.body);
-          result = resultDict["result"];
-        }
-        print(result);
-        // var i=base64.decode(result);
-        // backGround = Image.memory(i).image;
-      },
+      onTap: takeScreenState,
       child: const CircleAvatar(
         child: Icon(
           Icons.save,
@@ -276,5 +245,4 @@ class _DrawingPageState extends State<DrawingPage> {
       ),
     );
   }
-
 }
