@@ -1,6 +1,6 @@
+import '../widgets/boy.dart';
 import '/scdGame/scoundGame.dart';
 import 'package:flutter/material.dart';
-import '/boy.dart';
 import '../firstGame/firstGame.dart';
 
 class GameScreen extends StatefulWidget {
