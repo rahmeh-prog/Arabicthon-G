@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'homePage.dart';
 import '/helpers/colors.dart';
 import '/widgets/Button.dart';
 import 'package:flutter/gestures.dart';
@@ -28,7 +29,7 @@ class Welcome extends StatelessWidget {
                     text: "ابدأ اللعب",
                     textColor: Colors.white,
                     buttonColor: AppColors.BUTTON_COLOR,
-                    action: const Home()),
+                    action:  HomePage()),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(children: [

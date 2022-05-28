@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'homePage.dart';
 import '/helpers/colors.dart';
 import '/pages/signUp.dart';
 import '/widgets/Button.dart';
@@ -56,7 +57,7 @@ class Login extends StatelessWidget {
                                 text: "تسجيل دخول",
                                 textColor: Colors.white,
                                 buttonColor: AppColors.BUTTON_COLOR,
-                                action: Home(),
+                                action: HomePage(),
                               ),
                             ],
                           )

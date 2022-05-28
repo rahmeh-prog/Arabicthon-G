@@ -2,7 +2,7 @@ import 'dart:async';
 
 import '/button2.dart';
 
-import '/homePage.dart';
+import 'pages/homePage.dart';
 import '/thirdGame/temp.dart';
 import 'package:flutter/material.dart';
 

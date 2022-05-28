@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'homePage.dart';
 import '/helpers/colors.dart';
 import '/widgets/Button.dart';
 import '/widgets/Field.dart';
@@ -82,7 +83,7 @@ class SignUp extends StatelessWidget {
                             text: "تسجيل الحساب",
                             textColor: Colors.white,
                             buttonColor: AppColors.BUTTON_COLOR,
-                            action: Home(),
+                            action: HomePage(),
                           ),
                           RichText(
                             textAlign: TextAlign.center,
