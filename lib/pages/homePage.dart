@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '/button.dart';
+import '../widgets/mainButton.dart';
 import '/boy.dart';
-import '/gamesScreen.dart';
+im'gamesScreen.dart'dart';
 
 class HomePage extends StatefulWidget {
   @override

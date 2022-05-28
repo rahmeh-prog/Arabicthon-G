@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import '/button2.dart';
+import 'button2.dart';
 
-import 'pages/homePage.dart';
+import '../pages/homePage.dart';
 import '/thirdGame/temp.dart';
 import 'package:flutter/material.dart';
 
-import 'scdGame/scoundGame.dart';
+import '../scdGame/scoundGame.dart';
 import '/thirdGame/drawing_page.dart';
 
 void main() {

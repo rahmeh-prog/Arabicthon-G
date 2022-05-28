@@ -1,7 +1,7 @@
 import '/scdGame/scoundGame.dart';
 import 'package:flutter/material.dart';
 import '/boy.dart';
-import 'firstGame/firstGame.dart';
+import '../firstGame/firstGame.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);

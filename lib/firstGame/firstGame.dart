@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '/firstGame/components/resultCard.dart';
 import '/firstGame/utils/gameUtiles.dart';
 
-import '/global.dart' as global;
+import '../widgets/global.dart' as global;
 
 class FirstGame extends StatefulWidget {
   const FirstGame({Key? key}) : super(key: key);
