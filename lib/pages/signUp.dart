@@ -15,11 +15,12 @@ class SignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Stack(
+        child:  Stack(
           children: [
-            Positioned.fill(
+            Expanded(child: Positioned.fill(
               child: Image.asset('assets/images/signUp.png', fit: BoxFit.cover),
-            ),
+            ))
+,
             Center(
                 child: Container(
               decoration: BoxDecoration(

@@ -17,9 +17,10 @@ class Welcome extends StatelessWidget {
         color: Colors.black,
         child: Stack(
           children: [
-            Positioned.fill(
+            Expanded(child:  Positioned.fill(
               child: Image.asset('assets/images/splash.png', fit: BoxFit.cover),
-            ),
+            ))
+,
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,

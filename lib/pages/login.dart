@@ -16,9 +16,10 @@ class Login extends StatelessWidget {
       body: Container(
         child: Stack(
           children: [
-            Positioned.fill(
+            Expanded(child: Positioned.fill(
               child: Image.asset('assets/images/signUp.png', fit: BoxFit.cover),
-            ),
+            ))
+,
             Center(
                 child: Container(
                   decoration: BoxDecoration(

@@ -28,10 +28,12 @@ class SplashPage extends StatelessWidget {
           color: Colors.black,
           child: Stack(
             children: [
-              Positioned.fill(
-                child: Image.asset('assets/images/splash.png',
-                    fit: BoxFit.cover),
-              ),
+              Expanded(
+                child: Positioned.fill(
+                  child: Image.asset('assets/images/splash.png',
+                      fit: BoxFit.cover),
+                ),
+              )
             ],
           )
       ),
