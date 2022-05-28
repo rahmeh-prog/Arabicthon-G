@@ -1,17 +1,22 @@
-# game
+# كوكب غُصْن
 
-A new Flutter project.
+![283273874_1448685465581281_1827699923107750703_n](https://user-images.githubusercontent.com/76841711/170811816-471dc671-541a-410d-a63f-78d88af682da.png)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## مقدمة
+هذا المشروع هو نقطة انطلاق للعبة كوكب غُصْن والتي تهدف لاثراء وتنمية مهارات الطفل اللغوية والتفكيرية عن طريق مجموعة من الألعاب المتنوعة , والتي تبدأ مع الطفل بخطوات صغيرة الى ان يصل لمستوياتٍ عالية وعلى قدرٍ من التحدي, مع السماح لذوي الطفل بمتابعة تقدمه ونتائجه واقتراح خطط مستقبلية للتحسين من مستواه الاكاديمي والاجتماعي وغيرها من المجالات.
 
-A few resources to get you started if this is your first Flutter project:
+## التطبيق
+يتضمن التطبيق بالمرحلة الحالية 4 ألعاب قيد التطوير وهي المقابل الفصيح , التهجئة , الاملاء و القراءة. ويتم العمل على تطوير افكار جديدة تستخدم التكنولوجيا الحديثة مثل ال object detection,voice recognition وغيرها من تقنيات الذكاء الاصطناعي.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## التعليمات
+يتم العمل على رفع التطبيق على App store و Google play 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# Arabicthon-G" 
+## الادوات المستخدمة 
+تم تطوير كوكب غُصْن باستخدام العديد من البرمجيات منها : Flutter, Python, Dart
+## القائمين على العمل 
+* رحمة النجار 
+* مالك الدبسي  
+* شذى القريوتي
+* أحمد لافي 
+* أسامة الفتياني 
